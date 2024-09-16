@@ -22,9 +22,9 @@ jobs:
       
       - name: Build for production 🔧
         run: |
-          echo REACT_APP_BASE_URL=${{ vars.BASE_URL }} > .env
-          echo REACT_APP_EXCLUDED_PREFIXES=${{ vars.EXCLUDED_PREFIXES }} >> .env
-          echo REACT_APP_ENDPOINT=${{ vars.ENDPOINT }} >> .env
+          echo REACT_APP_BASE_URL=${{ vars.REACT_APP_BASE_URL }} > .env
+          echo REACT_APP_EXCLUDED_PREFIXES=${{ vars.REACT_APP_EXCLUDED_PREFIXES }} >> .env
+          echo REACT_APP_ENDPOINT=${{ vars.REACT_APP_ENDPOINT }} >> .env
           yarn install --frozen-lockfile
           yarn build
       
@@ -38,5 +38,4 @@ jobs:
 
       - name: Deploy to S3 Production
         run: |
-          ls -al
-          #aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.BASE_URL }}
+          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.REACT_APP_BASE_URL }}/
