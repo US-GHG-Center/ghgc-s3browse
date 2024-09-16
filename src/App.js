@@ -9,8 +9,6 @@ import { setDelim } from './feature/delimSlice'
 import { setSearch } from './feature/searchSlice'
 import { setCrumb } from './feature/crumbSlice'
 import { isImage } from './lib/isImage'
-import config from './config'
-import { Backdrop } from '@mui/material'
 
 const App = () => {
   const [skip, setSkip] = useState(false)
@@ -24,7 +22,7 @@ const App = () => {
   var url = window.location.href;
   var params = url.split('#')[1]
   const [open, setOpen] = useState(false)
-  const [img, setImg] = useState('')
+  const [_, setImg] = useState('')
 
   // console.log(url.split('#')[1]);
   useEffect(() => {
