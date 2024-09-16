@@ -49,7 +49,7 @@ export const fetchTheRest = async (resResp,delim,search ) => {
     
     if (marker || nextMarker) {
         var allResultsArrayContent = jsonResult.ListBucketResult.Contents;
-        while( nextMarker && (marker != nextMarker)) {
+        while( nextMarker && (marker !== nextMarker)) {
             marker = nextMarker;
             const response = await fetch(`${config.cloudWatchUrlBase}?list-type=1&delimiter=${delim}&prefix=${search}&marker=${marker}`);
             const result = await response.text();

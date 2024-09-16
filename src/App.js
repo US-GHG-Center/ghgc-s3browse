@@ -22,7 +22,7 @@ const App = () => {
   var url = window.location.href;
   var params = url.split('#')[1]
   const [open, setOpen] = useState(false)
-  const [_, setImg] = useState('')
+  const [img, setImg] = useState('')
 
   // console.log(url.split('#')[1]);
   useEffect(() => {
@@ -36,6 +36,7 @@ const App = () => {
       if (isImage(params)){
         //console.log('in')
         setImg(params)
+        console.log(img)
         handleToggle()
     }
       // dispatch(setCrumb(params))
