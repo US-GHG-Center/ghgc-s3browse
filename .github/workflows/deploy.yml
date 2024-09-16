@@ -38,4 +38,5 @@ jobs:
 
       - name: Deploy to S3 Production
         run: |
-          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.BASE_URL }} --delete
+          ls -al
+          #aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.BASE_URL }}
