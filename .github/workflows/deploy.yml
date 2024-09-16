@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 'v20.9.0'
+      
+      - name: Build for production 🔧
+        run: |
+          echo REACT_APP_BASE_URL={{ vars.BASE_URL }} > .env
+          echo REACT_APP_EXCLUDED_PREFIXES={{ vars.EXCLUDED_PREFIXES }} >> .env
+          echo REACT_APP_ENDPOINT={{ vars.ENDPOINT }} >> .env
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: deploy
+        run: |
+          cat .env

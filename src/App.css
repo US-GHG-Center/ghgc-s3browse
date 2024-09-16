@@ -1,0 +1,298 @@
+.prevNext {
+  text-align: center;
+}
+
+.cursorPtr {
+  cursor: pointer;
+}
+.pdf-canvas {
+  margin: auto;
+}
+
+.pdf-viewer-center {
+  text-align: center;
+  margin: 5px;
+}
+
+.textScroll {
+  overflow-y: scroll;
+  height: 800px;
+  width: 1400px;
+}
+
+.printIcon {
+  margin-left: 20px;
+}
+
+.downPrint {
+  background-color: unset;
+  border-width: 0;
+}
+
+.downPrint:hover,
+.img-zoom-in-out:hover {
+  background-color: black;
+  border-radius: 10px; /* change the value to adjust the rounding */
+  cursor: pointer;
+  opacity: 0.6;
+  transform: scale(1.25);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.fa-download-print {
+  color: white;
+}
+
+.downPrint:active,
+.img-zoom-in-out:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.leftRightArrow {
+  background-color: unset;
+  border-width: 0;
+}
+
+.leftRightArrow:hover {
+  background-color: black;
+  color: white;
+  border-radius: 15px; /* change the value to adjust the rounding */
+  cursor: pointer;
+  opacity: 0.6;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.leftRightArrow:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.backButton {
+  font-size: 15px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.disabledButton {
+  pointer-events: none;
+  opacity: 0.8;
+  cursor: not-allowed;
+  margin-left: 5px;
+}
+
+.backButton:hover {
+  color: #1976d2;
+  background-color: white;
+}
+
+.backButton span {
+  margin-left: 5px;
+}
+
+.topRight {
+  position: absolute;
+  top: 20px;
+  right: 100px;
+  cursor: pointer;
+}
+
+.topLeft {
+  position: absolute;
+  top: 20px;
+  left: 100px;
+  cursor: pointer;
+}
+
+.topCenter {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  right: 0px;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.alert {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-dismissible {
+  position: relative;
+  padding-right: 3rem;
+}
+
+.alert-dismissible .btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  margin: 10px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.image-zoom {
+  overflow-y: scroll;
+  max-height: 950px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.img-zoom-in-out {
+  background-color: unset;
+  border-width: 0;
+  color: white;
+}
+
+.zoom-buttons {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 25px;
+  background-color: rgb(13 12 12 / 38%);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /*width: 99%;*/
+}
+
+.checked {
+  color: #68e116;
+}
+
+.unchecked {
+  color: white;
+}
+
+.disabled-icon {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.container {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.progress-bar {
+  width: 100%;
+  position: relative;
+}
+
+.progress-text {
+  margin-left: 10px;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+.cancel-button {
+  flex-grow: 0;
+  margin-left: 10px;
+  cursor: pointer;
+  color: red;
+  border: none;
+  background: white;
+}
+
+.cancel-button:hover {
+  background-color: #eeecec;
+  border-radius: 25px; /* change the value to adjust the rounding */
+  cursor: pointer;
+  opacity: 0.9;
+  transform: scale(1.25);
+  box-shadow: 0px 0px 5px rgba(227, 224, 224, 0.5);
+}
+
+.cancel-button:active {
+  transform: translateY(4px);
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background color */
+  z-index: 9999; /* Set a high z-index to make sure it appears above other elements */
+}
+
+
+.versionAlign{
+  background: #186697;
+  border-radius: 0.124rem;
+  display: inline-block;
+  padding: 0 0.5rem;
+  vertical-align: middle;
+}
+
+.Toastify__toast--success {
+  color: #1976d2;
+}
+
+.Toastify__toast--success .Toastify__toast-body::before {
+  color: #1976d2; /* Change this to your desired color */
+}
+
+.search-input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.loading-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
