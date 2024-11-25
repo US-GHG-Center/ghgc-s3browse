@@ -257,7 +257,7 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
       setSearchTerm(query_val);
   
       const filteredRows = response.filter((row) =>
-        row.Key.toLowerCase().includes(query_val)
+        row.Key.toLowerCase().includes(query_val.toLowerCase())
       );
     
       setRows(filteredRows);
