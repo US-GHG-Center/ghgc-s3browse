@@ -250,10 +250,26 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
 
   useEffect(()=>{
     const url = window.location.href
+    var query =  url.split("#")[2];
+    console.log(query != undefined);
+    if(query != undefined) {
+      const query_val =query.split("=")[1]; 
+      setSearchTerm(query_val);
+  
+      const filteredRows = response.filter((row) =>
+        row.Key.toLowerCase().includes(query_val)
+      );
+    
+      setRows(filteredRows);
+  
+    }
+
     if (url.indexOf(".") !== -1 && url.indexOf('#') !== -1){ //run only if '.' and '#' is present in the url
       const id = url.split("#")[1]
       const url_split = url.split(".")
       const url_last_element = url_split[url_split.length - 1]
+
+
 
       if(isImage(url_last_element)){ //only run if the extension is one of the ones list on the isImage.js file
         setFilePath(`${config.cloudWatchUrlBase}${id}`)
@@ -394,6 +410,9 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
 
     setRows(filteredRows);
   };
+
+
+
 
   granColumns[0].renderHeader = () => (
     <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr' }}>

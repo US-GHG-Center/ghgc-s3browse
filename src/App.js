@@ -20,7 +20,8 @@ const App = () => {
   const dispatch = useDispatch()
   // console.log(window.location.href);
   var url = window.location.href;
-  var params = url.split('#')[1]
+  const url_split = url.split('#');
+  var params = url_split[1];
   const [open, setOpen] = useState(false)
   const [img, setImg] = useState('')
 
@@ -36,7 +37,7 @@ const App = () => {
       if (isImage(params)){
         //console.log('in')
         setImg(params)
-        console.log(img)
+        // console.log(img)
         handleToggle()
     }
       // dispatch(setCrumb(params))
