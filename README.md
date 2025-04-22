@@ -1,2 +1,3 @@
 # browseui
-React based application to list BROWSE images from S3 bucket
+A React-based application for displaying BROWSE images stored in an S3 bucket.
+
