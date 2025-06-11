@@ -18,14 +18,12 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <div className="app">
-                <main>
-                    <BrowserRouter>
-                        <Routes>
-                            <Route path='*' element={<App />} />
-                            <Route path='/browseui/404' element={<PageNotFound />} />
-                        </Routes>
-                    </BrowserRouter>
-                </main>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='*' element={<App />} />
+                        <Route path='/browseui/404' element={<PageNotFound />} />
+                    </Routes>
+                </BrowserRouter>
             </div>
         </Provider>
     </React.StrictMode>,

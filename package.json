@@ -17,6 +17,7 @@
     "@testing-library/user-event": "^14.3.0",
     "fast-xml-parser": "^4.0.9",
     "file-saver": "^2.0.5",
+    "jest": "^30.0.0",
     "jquery": "^3.7.1",
     "jszip": "^3.10.1",
     "pdfjs-dist": "^3.5.141",
@@ -38,10 +39,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "env-cmd -f .env.dev react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true env-cmd -f .env react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +62,24 @@
     ]
   },
   "devDependencies": {
-    "env-cmd": "^10.1.0"
+    "@parcel/packager-raw-url": "2.15.2",
+    "@parcel/transformer-webmanifest": "2.15.2",
+    "buffer": "^5.5.0||^6.0.0",
+    "env-cmd": "^10.1.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "parcel": "^2.13.3",
+    "parcel-resolver-tspaths": "^0.0.9",
+    "postcss": ">= 8",
+    "postcss-normalize": "^13.0.1",
+    "process": "^0.11.10"
+  },
+  "targets": {
+    "s3browse": {
+      "source": "public/index.html",
+      "context": "browser"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
