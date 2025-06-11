@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://ghrc.earthdata.nasa.gov/browseui",
+  "main": "dist/lib/main.js",
+  "source": "src/components/index.js",
+  "module": "dist/lib/module.js",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -41,6 +44,7 @@
   "scripts": {
     "start": "parcel",
     "build": "parcel build",
+    "build-lib": "parcel build ./src/components/index.js --dist-dir=dist/lib",
     "test": "jest"
   },
   "eslintConfig": {
