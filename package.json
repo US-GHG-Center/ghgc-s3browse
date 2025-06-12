@@ -42,9 +42,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "build-lib": "parcel build ./src/components/index.js --dist-dir=dist/lib",
+    "start": "cross-env APP_VERSION=$npm_package_version parcel",
+    "build": "cross-env APP_VERSION=$npm_package_version parcel build",
+    "build-lib": "cross-env APP_VERSION=$npm_package_version parcel build ./src/components/index.js --dist-dir=dist/lib",
     "test": "jest"
   },
   "eslintConfig": {
@@ -69,6 +69,7 @@
     "@parcel/packager-raw-url": "2.15.2",
     "@parcel/transformer-webmanifest": "2.15.2",
     "buffer": "^5.5.0||^6.0.0",
+    "cross-env": "^7.0.3",
     "env-cmd": "^10.1.0",
     "jest-watch-typeahead": "^2.2.2",
     "parcel": "^2.13.3",
