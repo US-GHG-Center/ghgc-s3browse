@@ -1,4 +1,3 @@
-import config from "../../config";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
 import { useState, useEffect } from "react";
@@ -47,7 +46,7 @@ export const useProgress = () => {
   return progressValue;
 };
 
-const downloader = async (linkList, setShow, setProgress, zipFlag) => {
+const downloader = async (linkList, cloudWatchUrlBase, setShow, setProgress, zipFlag) => {
   try {
     const zip = new JSZip();
     const maxFileSizeToZip = 200
@@ -64,7 +63,7 @@ const downloader = async (linkList, setShow, setProgress, zipFlag) => {
 
       if (link && link.Size) {
         const cacheBuster = new Date().getTime() + Math.random();
-        const url = `${config.cloudWatchUrlBase}${link["Key"]}?cache=${cacheBuster}`;
+        const url = `${cloudWatchUrlBase}${link["Key"]}?cache=${cacheBuster}`;
         const res = await fetch(url);
         const blob = await res.blob();
         const fileSizeMB = blob.size / (1024 * 1024);

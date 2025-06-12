@@ -1,4 +1,4 @@
-import config from "../../../config";
+import { useConfig } from "../../../context/configContext";
 import { isImage } from "../../../lib/isImage";
 import FileDownloader, {
   downloadFile,
@@ -19,6 +19,8 @@ const MiscDocsViewer = ({
   showArrowLeft,
   showArrowRight,
 }) => {
+  const config = useConfig();
+
   const folderUrl = img.split("/").filter(Boolean);
   const folderName = folderUrl[folderUrl.length - 1];
 

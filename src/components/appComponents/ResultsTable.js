@@ -8,7 +8,7 @@ import { setSearch } from "../../feature/searchSlice";
 import { setCrumb } from "../../feature/crumbSlice";
 import { isImage } from "../../lib/isImage";
 import { alpha, Backdrop } from "@mui/material";
-import config from "../../config";
+import { useConfig } from "../../context/configContext";
 import { useHref } from "react-router-dom";
 import "../../App.css";
 import TextFileViewer from "./fileViewer/TextFileViewer";
@@ -33,6 +33,7 @@ import Mp4Viewer from "./fileViewer/Mp4Viewer";
 
 //**********React component**********
 const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
+  const config = useConfig();
   //**********State Variables**********
   const search = useSelector((state) => state.search.value);
   const delim = useSelector((state) => state.delim.value);

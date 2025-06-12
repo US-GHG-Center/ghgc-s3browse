@@ -1,8 +1,9 @@
 import { AppBar, Typography, Box, Grid, Link } from '@mui/material'
 import React from 'react'
-import config from "../../config";
+import { useConfig } from '../../context/configContext';
 
 export const Footer = () => {
+  const config = useConfig();
   return (
     <AppBar position="relative" sx={{ top: 0, bottom: 0, bgcolor: '#2276AC', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <Box>
