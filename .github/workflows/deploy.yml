@@ -6,7 +6,8 @@ permissions:
 
 on:
   push:
-
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,9 +17,14 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v3
+      - name: Read Node.js version from .nvmrc
+        id: nvm
+        run: echo "::set-output name=NODE_VERSION::$(cat .nvmrc)"
+
+      - name: Set Node version to v${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 'v16.20.2'
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
       
       - name: Build for production 🔧
         run: |
