@@ -14,7 +14,7 @@ export const ConfigProvider = ({ children, config }: ConfigProviderProps): React
 
   useEffect(() => {
     if (!config) {
-      const configFromEnv = {
+      const configFromEnv: S3BrowseConfig = {
         cloudWatchUrlBase: process.env.REACT_APP_ENDPOINT || '',
         sourceIMGUrl: process.env.REACT_APP_ENDPOINT || '',
         version: process.env.APP_VERSION || 'v2.37.0',
