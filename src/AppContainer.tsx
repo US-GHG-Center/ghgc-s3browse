@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, } from "react-router-dom"
 import { Provider } from 'react-redux'
 import App from './App'
 import getStore from './app/store'
 import PageNotFound from './pages/PageNotFound';
-
-import { useConfig } from "./context/configContext";
 import { getApiSlice } from "./context/apiSliceContext";
 
 import './App.css'

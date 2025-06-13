@@ -1,22 +1,24 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import $ from 'jquery';
+
+import { S3BrowseConfig } from "../configContext/types";
 
 const ApiSliceContext = createContext({});
 
 interface ApiSliceProviderProps {
-  cloudWatchUrlBase: string
+  config: S3BrowseConfig
   children: ReactNode
 }
 
-export const ApiSliceProvider = ({cloudWatchUrlBase, children}: ApiSliceProviderProps): ReactNode => {
+export const ApiSliceProvider = ({config, children}: ApiSliceProviderProps): ReactNode => {
   const [apiSliceRef, setApiSliceRef] = useState<ReturnType <typeof createApi> | object>({});
 
   useEffect(() => {
-    if (!cloudWatchUrlBase) return;
+    if (!config || !Object.keys(config).length) return;
     const apiSlice = createApi({
         reducerPath: 'api',
-        baseQuery: fetchBaseQuery({baseUrl: cloudWatchUrlBase}),
+        baseQuery: fetchBaseQuery({baseUrl: config.cloudWatchUrlBase}),
         tagTypes: ['grans'],
         endpoints: builder => ({
             getGranSearch: builder.query({
@@ -33,7 +35,7 @@ export const ApiSliceProvider = ({cloudWatchUrlBase, children}: ApiSliceProvider
         })
     });
     if (apiSlice) setApiSliceRef(apiSlice);
-  }, [cloudWatchUrlBase, children]);
+  }, [config, children]);
 
   return (
     <ApiSliceContext.Provider value={{ apiSlice: apiSliceRef }}>

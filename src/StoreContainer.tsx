@@ -7,21 +7,15 @@ interface StoreContainerProps {
 }
 
 export function StoreContainer({children}: StoreContainerProps): ReactNode {
-// export const StoreContainer = () => {
-    const [ cloudWatchUrlBase, setCloudWatchUrlBase ] = useState("");
-    const { config } = useConfig();
+  const { config } = useConfig();
 
-    useEffect(() => {
-      if (!config || !(Object.keys(config).length)) return;
-      setCloudWatchUrlBase(config.cloudWatchUrlBase)
-    }, [config])
+  if (!config || !(Object.keys(config).length)) return;
 
-    return (<>{
-              cloudWatchUrlBase && (
-                <ApiSliceProvider cloudWatchUrlBase={cloudWatchUrlBase}>
-                  { children }
-                </ApiSliceProvider>
-                )
-              }
-            </>)
+
+  return (<>{
+      <ApiSliceProvider config={config}>
+        { children }
+      </ApiSliceProvider>
+    }</>
+  )
 }
