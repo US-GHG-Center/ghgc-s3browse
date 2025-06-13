@@ -68,6 +68,7 @@
   "devDependencies": {
     "@parcel/packager-raw-url": "2.15.2",
     "@parcel/transformer-webmanifest": "2.15.2",
+    "@types/jquery": "^3.5.32",
     "buffer": "^5.5.0||^6.0.0",
     "cross-env": "^7.0.3",
     "env-cmd": "^10.1.0",

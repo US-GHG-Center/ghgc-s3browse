@@ -1,4 +1,4 @@
-import { createContext, useContext, useRef, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
 import { S3BrowseConfig } from './types';
 
@@ -6,11 +6,12 @@ const ConfigContext = createContext({}); // NOTE: should have default values her
 
 interface ConfigProviderProps {
   children: ReactNode,
-  config: S3BrowseConfig
+  config: S3BrowseConfig | null
 }
 
 export const ConfigProvider = ({ children, config }: ConfigProviderProps): ReactNode => {
-  const finalConfig = useRef<S3BrowseConfig | null>(null);
+  // const finalConfig = useRef<S3BrowseConfig | object>({});
+  const [finalConfig, setFinalConfig] = useState<S3BrowseConfig | object>({})
 
   useEffect(() => {
     if (!config) {
@@ -20,18 +21,18 @@ export const ConfigProvider = ({ children, config }: ConfigProviderProps): React
         version: process.env.APP_VERSION || 'v2.37.0',
         excluded_prefixes: process.env.REACT_APP_EXCLUDED_PREFIXES ? process.env.REACT_APP_EXCLUDED_PREFIXES.split(',') : []
       }
-      finalConfig.current = configFromEnv
+      setFinalConfig(configFromEnv);
     } else {
-      finalConfig.current = config;
+      setFinalConfig(config);
     }
   }, [children, config]);
 
   return (
-    <ConfigContext.Provider value={{ config: finalConfig.current }}>
+    <ConfigContext.Provider value={{ config: finalConfig }}>
       {children}
     </ConfigContext.Provider>
   );
 };
 
-export const useConfig = (): { config: S3BrowseConfig | null } => useContext(ConfigContext) as { config: S3BrowseConfig | null };
+export const useConfig = (): { config: S3BrowseConfig } => useContext(ConfigContext) as { config: S3BrowseConfig };
 

@@ -1,7 +1,8 @@
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useGetGranSearchQuery, fetchTheRest } from "../../feature/api/apiSlice";
+import { fetchTheRest } from "../../feature/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getApiSlice } from "../../context/apiSliceContext";
 import { setSelectedList } from "../../feature/selectedListSlice";
 import { setDelim } from "../../feature/delimSlice";
 import { setSearch } from "../../feature/searchSlice";
@@ -281,8 +282,13 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
   }, [response])
 
 
+  const { apiSlice } = getApiSlice()
+  const {
+      useGetGranSearchQuery,
+  } = apiSlice
 
   // //**********Api Logic**********
+  // const useGetGranSearchQuery = apiSliceFactory.getUseGetGranSearchQuery();
   const {
     data: resp,
     isSuccess,
@@ -301,7 +307,7 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
     
     if (isSuccess) {
   
-      fetchTheRest(resp, delim, search).then(res => {
+      fetchTheRest(resp, config.cloudWatchUrlBase, config.excluded_prefixes, delim, search).then(res => {
         processResp(res);
       });
     } else if (isError) {

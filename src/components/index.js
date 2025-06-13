@@ -1,1 +1,1 @@
-export { CloudBrowse } from "../AppContainer"
+export { CloudBrowse } from "../CloudBrowse"
