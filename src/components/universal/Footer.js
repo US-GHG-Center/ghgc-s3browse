@@ -4,7 +4,7 @@ import config from "../../config";
 
 export const Footer = () => {
   return (
-    <AppBar position="relative" sx={{ top: 0, bottom: 0, bgcolor: '#2276AC', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <AppBar position="relative" sx={{ top: 0, bottom: 0, bgcolor: '#3D4551', display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'10px', fontFamily: "'Public Sans', sans-serif" }}>
       <Box>
         <Typography variant='caption' textAlign='center' className={'versionAlign'}>
           {config.version}

@@ -25,7 +25,7 @@
 }
 
 .downPrint {
-  background-color: unset;
+  /* background-color: unset; */
   border-width: 0;
 }
 
@@ -262,10 +262,10 @@ main {
 
 
 .versionAlign{
-  background: #186697;
-  border-radius: 0.124rem;
+  background: #A9AEB1;
+  border-radius: 0.5rem;
   display: inline-block;
-  padding: 0 0.5rem;
+  padding: 0.2rem 0.5rem;
   vertical-align: middle;
 }
 
@@ -295,4 +295,8 @@ main {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
+}
+
+.MuiDataGrid-row.even {
+  background-color: #f5f5f5 !important; /* or your desired color */
 }
