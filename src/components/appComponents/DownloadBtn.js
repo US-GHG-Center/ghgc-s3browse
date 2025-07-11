@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import FileDownloader from "../universal/FileDownloader";
+import { useConfig } from "../../context/configContext";
 import { updateProgress, useProgress } from "../universal/FileDownloader";
 import { MoonLoader  } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
@@ -10,6 +11,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 const DownloadBtn = ({ setShow, setfilesCount }) => {
+  const config = useConfig();
   const selectedList = useSelector((state) => state.selectedList.value);
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +41,7 @@ const DownloadBtn = ({ setShow, setfilesCount }) => {
     }
 
     handleShowToast(flag);
-    FileDownloader(selectedList, setShow, setProgress, flag);
+    FileDownloader(selectedList, config.cloudWatchUrlBase, setShow, setProgress, flag);
     updateProgress(progress);
     handleClose();
   };

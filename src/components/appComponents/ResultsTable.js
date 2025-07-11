@@ -1,14 +1,15 @@
 import { DataGrid, gridClasses } from "@mui/x-data-grid";
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import { useGetGranSearchQuery, fetchTheRest } from "../../feature/api/apiSlice";
+import { fetchTheRest } from "../../feature/api/apiSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getApiSlice } from "../../context/apiSliceContext";
 import { setSelectedList } from "../../feature/selectedListSlice";
 import { setDelim } from "../../feature/delimSlice";
 import { setSearch } from "../../feature/searchSlice";
 import { setCrumb } from "../../feature/crumbSlice";
 import { isImage } from "../../lib/isImage";
 import { alpha, Backdrop } from "@mui/material";
-import config from "../../config";
+import { useConfig } from "../../context/configContext";
 import { useHref } from "react-router-dom";
 import "../../App.css";
 import TextFileViewer from "./fileViewer/TextFileViewer";
@@ -33,6 +34,7 @@ import Mp4Viewer from "./fileViewer/Mp4Viewer";
 
 //**********React component**********
 const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
+  const config = useConfig();
   //**********State Variables**********
   const search = useSelector((state) => state.search.value);
   const delim = useSelector((state) => state.delim.value);
@@ -181,11 +183,10 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
     //To set the next image to original size
     setScale(1);
     // File preview
-    setFilePath(`${config.cloudWatchUrlBase}${id}`, () => {
-      setImg(id);
-      setRowData(rows.row);
-      setOpen(true);
-    });
+    setFilePath(`${config.cloudWatchUrlBase}${id}`)
+    setImg(id);
+    setRowData(rows.row);
+    setOpen(true);
 
     // console.log('id: '+id);
     //handles double click of a columb and queries a file
@@ -281,8 +282,13 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
   }, [response])
 
 
+  const { apiSlice } = getApiSlice()
+  const {
+      useGetGranSearchQuery,
+  } = apiSlice
 
   // //**********Api Logic**********
+  // const useGetGranSearchQuery = apiSliceFactory.getUseGetGranSearchQuery();
   const {
     data: resp,
     isSuccess,
@@ -301,7 +307,7 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
     
     if (isSuccess) {
   
-      fetchTheRest(resp, delim, search).then(res => {
+      fetchTheRest(resp, config.cloudWatchUrlBase, config.excluded_prefixes, delim, search).then(res => {
         processResp(res);
       });
     } else if (isError) {
