@@ -469,16 +469,40 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
       
       <DataGrid
         sx={{
+          fontFamily: 'Public Sans, sans-serif',
+          "& .MuiDataGrid-columnHeaderTitle": {
+            fontFamily: 'DM Sans, sans-serif',
+          },
+          "& .MuiDataGrid-cell": {
+            borderBottom: "none !important",
+          },
+          "& .MuiDataGrid-columnHeaders": {
+            borderBottom: "none !important",
+          },   
+          "& .MuiDataGrid-iconSeparator": {
+            color: "#3D4551", 
+          },  
           "& .MuiDataGrid-cell:hover": { cursor: "pointer" },
           [`& .${gridClasses.row}.even`]: {
-            backgroundColor: "#e3e3e3",
+            backgroundColor: "#F9F4F0",
             "&:hover, &.Mui-hovered": {
-              backgroundColor: alpha("#c1d5f7", ODD_OPACITY),
+              backgroundColor: "#DDD7D2",
             },
             "&.Mui-selected": {
-              backgroundColor: alpha("#7ca7f7", ODD_OPACITY),
+              backgroundColor: "#DDD7D2",
               "&:hover, &.Mui-hovered": {
-                backgroundColor: alpha("#c1d5f7", ODD_OPACITY),
+                backgroundColor: "#DDD7D2",
+              },
+            },
+          },
+          [`& .${gridClasses.row}.odd`]: {
+            "&:hover, &.Mui-hovered": {
+              backgroundColor: "#DDD7D2",
+            },
+            "&.Mui-selected": {
+              backgroundColor: "#DDD7D2",
+              "&:hover, &.Mui-hovered": {
+                backgroundColor: "#DDD7D2",
               },
             },
           },
