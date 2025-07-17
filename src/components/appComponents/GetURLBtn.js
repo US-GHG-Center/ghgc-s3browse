@@ -87,7 +87,23 @@ const GetURLBtn = () => {
     <Button
     onClick={() => {handleClick()}}
     variant='outlined'
-    sx={{ml: 3, borderRadius: 2}}
+    sx={{
+      ml: 1,
+      borderRadius: 2,
+      borderWidth: 2,
+      color: '#222fbf',
+      backgroundColor: '#fff',
+      borderColor: '#222fbf', 
+      '&:hover': {
+        backgroundColor: "#f1eff7",
+      },
+      '&:disabled': {
+        color: 'rgba(34, 47, 191, 0.4)',
+        borderColor: 'rgba(34, 47, 191, 0.4)',
+        pointerEvents: 'none',
+        borderWidth: 2,
+      },
+    }}
     disabled={ selectedList.length === 0}>
         Get URL
     </Button>

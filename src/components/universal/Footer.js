@@ -1,14 +1,13 @@
 import { AppBar, Typography, Box, Grid, Link } from '@mui/material'
 import React from 'react'
-import { useConfig } from '../../context/configContext';
+import packageJson from '../../../package.json';
 
 export const Footer = () => {
-  const config = useConfig();
   return (
-    <AppBar position="relative" sx={{ top: 0, bottom: 0, bgcolor: '#2276AC', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <AppBar position="relative" sx={{ top: 0, bottom: 0, bgcolor: '#3D4551', display: 'flex', justifyContent: 'center', alignItems: 'center', padding:'10px'}}>
       <Box>
         <Typography variant='caption' textAlign='center' className={'versionAlign'}>
-          {config.version}
+          {packageJson.version}
         </Typography>
         <Link target='_blank' href='http://www.nasa.gov/about/highlights/HP_Privacy.html'
               variant='caption' color='inherit' underline='hover' textAlign='center' sx={{ ml: 2 }}>

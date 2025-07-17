@@ -122,7 +122,23 @@ const DownloadBtn = ({ setShow, setfilesCount }) => {
       <div>
         <Button
           variant="outlined"
-          sx={{ ml: 13, borderRadius: 2 }}
+          sx={{
+            ml: 1,
+            borderRadius: 2,
+            borderWidth: 2,
+            color: '#222fbf',
+            backgroundColor: '#fff',
+            borderColor: '#222fbf', 
+            '&:hover': {
+              backgroundColor: "#f1eff7",
+            },
+            '&:disabled': {
+              color: 'rgba(34, 47, 191, 0.4)',
+              borderColor: 'rgba(34, 47, 191, 0.4)',
+              pointerEvents: 'none',
+              borderWidth: 2,
+            },
+          }}
           onClick={handleClick2}
           disabled={ (useProgress() !== 0 && progress !== 0) || selectedList.length === 0 || (selectedList.length === undefinedSizeCount) }
         >

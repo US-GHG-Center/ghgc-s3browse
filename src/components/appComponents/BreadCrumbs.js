@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setDelim } from '../../feature/delimSlice'
 import { setSearch } from '../../feature/searchSlice'
 import { setCrumb } from '../../feature/crumbSlice'
-import { FaHome } from "react-icons/fa";
 //import { useLocation } from "react-router-dom";
 const BreadCrumbs = ({ setSkipFalse }) => {
     const [crumbArray, setCrumbArray] = useState([])
@@ -60,7 +59,7 @@ const BreadCrumbs = ({ setSkipFalse }) => {
 
 
   return (
-      <Box sx={{ml: 15, mt:1}}>
+      <Box sx={{ml: 2, mt:1}}>
           <Breadcrumbs>
               <Typography onClick={() => handleRootClick()} sx={{cursor:"pointer"}}>
                    Home
