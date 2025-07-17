@@ -3,11 +3,15 @@ import { CloudBrowse } from "./CloudBrowse";
 import { TopBar } from './components/universal/TopBar';
 import { Footer } from './components/universal/Footer';
 import { CssBaseline, Box } from '@mui/material';
+import theme from './theme';
+import { ThemeProvider } from '@mui/material/styles';
+
 
 const root = createRoot(document.getElementById('root'));
 
 root.render(
   <>
+  <ThemeProvider theme={theme}>
     <CssBaseline />
     <Box
       sx={{
@@ -23,5 +27,6 @@ root.render(
       </Box>
       <Footer />
     </Box>
+    </ThemeProvider>
   </>
 );

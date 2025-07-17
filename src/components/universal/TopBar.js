@@ -11,7 +11,7 @@ export const TopBar = () => {
             component='img'
             src='/browseui/assets/us-ghg-logo.svg'/> */}
 
-            <Typography variant="h5" noWrap component="div" sx={{ml: 2, fontWeight: "550", color: '#1B1B1B', fontFamily: "'DM Sans', sans-serif", marginLeft:'60px', letterSpacing: '0.05em'  }}>
+            <Typography variant="h5" noWrap component="div" sx={{ml: 2, fontWeight: "550", color: '#1B1B1B', marginLeft:'60px', letterSpacing: '0.05em'  }}>
             U.S. Greenhouse Gas Center | Data Browser
             </Typography>
         </Toolbar>

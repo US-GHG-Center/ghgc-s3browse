@@ -469,10 +469,10 @@ const ResultsTable = ({ skip, setSkipTrue, setSkipFalse }) => {
       
       <DataGrid
         sx={{
-          fontFamily: 'Public Sans, sans-serif',
-          "& .MuiDataGrid-columnHeaderTitle": {
-            fontFamily: 'DM Sans, sans-serif',
-          },
+          // fontFamily: 'Public Sans, sans-serif',
+          // "& .MuiDataGrid-columnHeaderTitle": {
+          //   fontFamily: 'DM Sans, sans-serif',
+          // },
           "& .MuiDataGrid-cell": {
             borderBottom: "none !important",
           },
