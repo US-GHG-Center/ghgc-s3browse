@@ -26,15 +26,14 @@ jobs:
       
       - name: Build for production 🔧
         run: |
-          echo REACT_APP_BASE_URL=/browseui > .env
-          echo REACT_APP_BASE_URL_PREV=${{ vars.REACT_APP_BASE_URL }} > .env
+          echo REACT_APP_BASE_URL=${{ vars.REACT_APP_BASE_URL }} > .env
           echo REACT_APP_EXCLUDED_PREFIXES=${{ vars.REACT_APP_EXCLUDED_PREFIXES }} >> .env
           echo REACT_APP_ENDPOINT=${{ vars.REACT_APP_ENDPOINT }} >> .env
 
           echo "🔍 Printing .env contents:"
           cat .env
 
-          yarn install --frozen-lockfile
+          yarn install --public-url=/${{ vars.REACT_APP_BASE_URL }} --frozen-lockfile
           yarn build
       
       - name: Configure AWS Credentials
