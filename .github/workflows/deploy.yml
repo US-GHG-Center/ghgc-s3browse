@@ -45,3 +45,4 @@ jobs:
           distribution-id: ${{ secrets.CF_DISTRIBUTION_ID }}
           paths: |
             /*
+
