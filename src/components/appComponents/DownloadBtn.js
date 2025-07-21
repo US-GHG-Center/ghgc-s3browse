@@ -131,6 +131,8 @@ const DownloadBtn = ({ setShow, setfilesCount }) => {
             borderColor: '#222fbf', 
             '&:hover': {
               backgroundColor: "#f1eff7",
+              borderWidth: 2,
+              borderColor: '#222fbf', 
             },
             '&:disabled': {
               color: 'rgba(34, 47, 191, 0.4)',
