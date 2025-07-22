@@ -10,7 +10,7 @@ const TopBar = () => {
         <Box
             sx={{width: 120}}
             component='img'
-            src='/browseui/assets/disasters-white-logo.svg'/>
+            src='/browseui/assets/us-ghg-logo.svg'/>
             </a>
 
             <Typography variant="h5" noWrap component="div" sx={{ml: 2, fontWeight: "400", fontWeight:"bold"}}>
