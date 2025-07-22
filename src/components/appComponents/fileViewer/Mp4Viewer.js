@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import { useConfig } from '../../../context/configContext';
+import config from "../../../config";
 import printJS from "print-js";
 import { isImage } from "../../../lib/isImage";
 import FileDownloader, {
@@ -22,7 +22,6 @@ const Mp4Viewer = ({
     showArrowRight,
     showArrowLeft,
 }) => {
-  const config = useConfig();
 
   return (
     <>

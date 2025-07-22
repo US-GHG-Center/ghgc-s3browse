@@ -7,10 +7,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useConfig } from '../../context/configContext';
+import config from '../../config';
 
 const GetURLBtn = () => {
-    const config = useConfig();
     const [open, setOpen] = React.useState(false);
     const scroll  = 'paper'
     const listOfLinks = React.useRef([]);

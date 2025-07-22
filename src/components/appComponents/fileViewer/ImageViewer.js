@@ -1,5 +1,5 @@
 import printJS from "print-js";
-import { useConfig } from "../../../context/configContext";
+import config from "../../../config";
 import { isImage } from "../../../lib/isImage";
 import FileDownloader, {
   downloadFile,
@@ -24,7 +24,6 @@ const ImageViewer = ({
   showArrowRight,
   showArrowLeft,
 }) => {
-  const config = useConfig();
   //**********State Variables**********
 
   const transformComponentRef = useRef(null);

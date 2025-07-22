@@ -1,5 +1,5 @@
 import { Viewer, Worker } from "@react-pdf-viewer/core";
-import { useConfig } from "../../../context/configContext";
+import config from "../../../config";
 import React from "react";
 import * as pdfjs from "pdfjs-dist";
 import { toolbarPlugin } from "@react-pdf-viewer/toolbar";
@@ -24,7 +24,6 @@ const PdfViewer = ({
   showArrowRight,
   showArrowLeft,
 }) => {
-  const config = useConfig();
   const workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
   const toolbarPluginInstance = toolbarPlugin();
   const { Toolbar } = toolbarPluginInstance;
