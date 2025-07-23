@@ -21,26 +21,19 @@
 }
 
 .printIcon {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .downPrint {
   background-color: unset;
   border-width: 0;
-}
 
-.downPrint:hover,
-.img-zoom-in-out:hover {
-  background-color: black;
-  border-radius: 10px; /* change the value to adjust the rounding */
-  cursor: pointer;
-  opacity: 0.6;
-  transform: scale(1.25);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-}
+  position: relative;
+  top:10px;
 
-.fa-download-print {
-  color: white;
+}
+.downPrint:hover {
+  transform: scale(1.2)
 }
 
 .downPrint:active,
@@ -53,21 +46,19 @@
 .leftRightArrow {
   background-color: unset;
   border-width: 0;
+  position: relative;
+  top:10px;
+  transition: transform 0.2s ease;
+
 }
 
 .leftRightArrow:hover {
-  background-color: black;
-  color: white;
-  border-radius: 15px; /* change the value to adjust the rounding */
-  cursor: pointer;
-  opacity: 0.6;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  transform: scale(1.5);
+
 }
 
 .leftRightArrow:active {
-  background-color: black;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  transform: scale(1.5) translateY(4px);
 }
 
 .backButton {
@@ -88,8 +79,10 @@
 }
 
 .backButton:hover {
-  color: #1976d2;
+  color: #222fbf;
   background-color: white;
+  transform: scale(1.5);
+
 }
 
 .backButton span {
@@ -97,9 +90,9 @@
 }
 
 .topRight {
-  position: absolute;
-  top: 20px;
-  right: 100px;
+  position: relative;
+  /* top: 20px;
+  right: 100px; */
   cursor: pointer;
 }
 
@@ -190,7 +183,7 @@ main {
 }
 
 .checked {
-  color: #68e116;
+  color: #222fbf;
 }
 
 .unchecked {
@@ -221,7 +214,7 @@ main {
 
 .progress-text {
   margin-left: 10px;
-  color: #1976d2;
+  color: #222fbf;
   font-weight: bold;
 }
 
@@ -269,11 +262,11 @@ main {
 }
 
 .Toastify__toast--success {
-  color: #1976d2;
+  color: #222fbf;
 }
 
 .Toastify__toast--success .Toastify__toast-body::before {
-  color: #1976d2; /* Change this to your desired color */
+  color: #222fbf; /* Change this to your desired color */
 }
 
 .search-input {
@@ -284,7 +277,7 @@ main {
 }
 
 .search-input:focus {
-  border-color: #007bff;
+  border-color: #222fbf;
   outline: none;
 }
 
@@ -294,4 +287,230 @@ main {
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
+}
+
+/* Your existing CSS */
+.usa-banner__content#partners-banner .usa-media-block__body {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2vw;
+  margin-left: 0;
+}
+
+.usa-banner__content
+{
+  margin-left: 0 !important;
+
+}
+
+.usa-banner__content#partners-banner .usa-media-block__body img {
+  flex: 1 1 0;
+  max-width: 20%;
+  height: auto;
+  object-fit: contain;
+  min-width: 0;
+}
+
+/* Modified header with slanted separator */
+.usa-banner__header {
+  background-color: #1b1b1b;
+  color: white !important;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+
+}
+
+/* Create the slanted separator effect */
+.usa-banner__header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -50px;
+  /* Move it further right to extend beyond the container */
+  width: 250px;
+  /* Make it wider to ensure full coverage */
+  height: 100%;
+  background-color: #3D4551;
+  /* Red color for the right section */
+  transform: skewX(-45deg);
+  transform-origin: top right;
+  z-index: 1;
+}
+
+
+/* Ensure the content stays above the slanted background */
+.usa-banner__header .grid-row {
+  position: relative;
+  z-index: 2;
+}
+
+/* Style the right section content */
+.usa-banner__header .partners-button-wrapper {
+  position: relative;
+  z-index: 3;
+}
+
+.usa-banner__header .partners-button-wrapper .usa-banner__header-action,
+.usa-banner__header .partners-button-wrapper .usa-banner__button-text {
+  color: white !important;
+}
+
+.usa-accordion {
+  background-color: #1b1b1b;
+  color: white !important;
+}
+
+.usa-accordion>a {
+  color: inherit;
+}
+
+.usa-banner__content {
+  background-color: #1b1b1b;
+  color: white !important;
+  max-width: none;
+  margin-left: 0;
+  align-self: 'left';
+}
+
+#partners-banner {
+  background-color: #DDD6D2;
+}
+
+.usa-banner__button,
+.usa-banner__button:hover {
+  color: #dfe1e2;
+}
+
+.usa-banner__button::after {
+  background-color: #dfe1e2;
+}
+
+.usa-banner__button:hover::after {
+  background-color: #dfe1e2;
+}
+
+.usa-banner__button[aria-expanded=true]::after {
+  background-color: #dfe1e2;
+}
+
+.usa-banner__button[aria-expanded=true]:hover::after {
+  background-color: #dfe1e2;
+}
+
+.usa-banner__header {
+  font-size: .75rem;
+  padding: 8px;
+}
+
+.usa-banner .usa-accordion {
+  font-size: 16px;
+  color: white !important;
+  font-family: "Public Sans", sans-serif;
+  text-transform: none;
+  font-style: normal;
+  font-variation-settings: 'pnum' 0;
+  font-weight: 400;
+}
+
+/* Additional styling for better visual separation */
+.usa-banner__header .usa-banner__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Optional: Add some padding to the right section to account for the slant */
+.usa-banner__header .partners-button-wrapper {
+  padding-right: 1rem;
+}
+
+/* Optional: Adjust the flag and left text to ensure proper contrast */
+.usa-banner__header .usa-banner__header-flag,
+.usa-banner__header .usa-banner__header-text,
+.usa-banner__header .usa-banner__header-action {
+  position: relative;
+  z-index: 2;
+  color: white;
+  
+}
+
+.usa-banner__button::after {
+  background-color: #dfe1e2;
+  mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_more.svg");
+}
+
+.usa-banner__button[aria-expanded=true]::after {
+  background-color: #dfe1e2;
+  mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_less.svg");
+}
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 640px) {
+  .usa-banner__header::before {
+      right: -30px;
+      width: 200px;
+      transform: skewX(-15deg);
+  }
+
+  .usa-banner__header .partners-button-wrapper {
+      padding-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .usa-banner__header::before {
+      right: -20px;
+      width: 150px;
+      transform: skewX(-10deg);
+  }
+}
+
+.usa-banner__button.white-text-override:hover,
+.usa-banner__button.white-text-override:focus {
+  background-color: white !important;
+  border-color: white !important;
+  color: white !important;
+}
+
+/* Override button text and border */
+.usa-banner__button.white-banner-button {
+  color: white !important;
+  background-color: transparent !important;
+  border: 1px solid white !important;
+}
+
+/* Override the dropdown arrow background and mask */
+.usa-banner__button.white-banner-button::after {
+  background-color: transparent !important;
+  -webkit-mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_more.svg") !important;
+  mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_more.svg") !important;
+  /* Use white color to fill the mask */
+  background-color: white !important;
+}
+
+/* When expanded, change the arrow icon */
+.usa-banner__button.white-banner-button[aria-expanded="true"]::after {
+  -webkit-mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_less.svg") !important;
+  mask-image: url("https://cdnjs.cloudflare.com/ajax/libs/uswds/3.13.0/img/usa-icons/expand_less.svg") !important;
+  background-color: white !important;
+}
+
+/* Hover and focus states */
+.usa-banner__button.white-banner-button:hover,
+.usa-banner__button.white-banner-button:focus {
+  background-color: rgba(255 255 255 / 0.1) !important; /* subtle white overlay */
+  color: white !important;
+  border-color: white !important;
+}
+
+.usa-banner__button.white-banner-button:hover::after,
+.usa-banner__button.white-banner-button:focus::after {
+  background-color: white !important;
+}
+
+/* Make sure the span text inside the button is white */
+.usa-banner__button.white-banner-button .usa-banner__button-text {
+  color: white !important;
 }

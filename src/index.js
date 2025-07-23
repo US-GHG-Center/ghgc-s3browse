@@ -2,6 +2,8 @@ import { createRoot } from 'react-dom/client';
 import { CloudBrowse } from "./CloudBrowse";
 import { TopBar } from './components/universal/TopBar';
 import { Footer } from './components/universal/Footer';
+import { Banner } from './components/universal/Banner';
+
 import { CssBaseline, Box } from '@mui/material';
 import theme from './theme';
 import { ThemeProvider } from '@mui/material/styles';
@@ -21,6 +23,7 @@ root.render(
         overflow: 'hidden'
       }}
     >
+      <Banner />
       <TopBar />
       <Box sx={{ flexGrow: 1, overflow: 'auto' }}>
         <CloudBrowse />
