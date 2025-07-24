@@ -6,9 +6,13 @@ permissions:
 
 on:
   push:
+    branches:
+      - main
+      - uswds-styling-changes
 
 jobs:
-  build:
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -17,25 +21,21 @@ jobs:
 
       - name: Read Node.js version from .nvmrc
         id: nvm
-        run: echo "::set-output name=NODE_VERSION::$(cat .nvmrc)"
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
-      - name: Set Node version to v${{ steps.nvm.outputs.NODE_VERSION }}
+      - name: Set Node version
         uses: actions/setup-node@v3
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-      
+
       - name: Build for production 🔧
         run: |
           echo REACT_APP_BASE_URL=${{ vars.REACT_APP_BASE_URL }} > .env
           echo REACT_APP_EXCLUDED_PREFIXES=${{ vars.REACT_APP_EXCLUDED_PREFIXES }} >> .env
           echo REACT_APP_ENDPOINT=${{ vars.REACT_APP_ENDPOINT }} >> .env
-
-          echo "🔍 Printing .env contents:"
-          cat .env
-
-          yarn install --public-url=/${{ vars.REACT_APP_BASE_URL }} --frozen-lockfile
+          yarn install --frozen-lockfile
           yarn build
-      
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -43,13 +43,56 @@ jobs:
           role-session-name: "ghgc-s3browse-deployment"
           aws-region: "us-west-2"
 
-
       - name: Deploy to S3 Production
         run: |
-          aws s3 sync ./dist s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.REACT_APP_BASE_URL }}/ --cache-control max-age=30,must-revalidate,s-maxage=604800 --delete
+          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME }}/${{ vars.REACT_APP_BASE_URL }}/ --cache-control max-age=30,must-revalidate,s-maxage=604800 --delete
+
       - name: Request Invalidation to AWS Cloudfront
         uses: oneyedev/aws-cloudfront-invalidation@v1
         with:
           distribution-id: ${{ secrets.CF_DISTRIBUTION_ID }}
+          paths: |
+            /*
+
+  deploy-development:
+    if: github.ref == 'refs/heads/uswds-styling-changes'
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Read Node.js version from .nvmrc
+        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
+      - name: Set Node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+
+      - name: Build for development 🔧
+        run: |
+          echo REACT_APP_BASE_URL=${{ vars.REACT_APP_BASE_URL }} > .env
+          echo REACT_APP_EXCLUDED_PREFIXES=${{ vars.REACT_APP_EXCLUDED_PREFIXES }} >> .env
+          echo REACT_APP_ENDPOINT=${{ vars.REACT_APP_ENDPOINT }} >> .env
+          yarn install --frozen-lockfile
+          yarn build
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: ${{ vars.DEPLOYMENT_ARN_ROL_DEV }}
+          role-session-name: "ghgc-s3browse-deployment"
+          aws-region: "us-west-2"
+
+      - name: Deploy to S3 Development
+        run: |
+          aws s3 sync ./build s3://${{ secrets.S3_BUCKET_NAME_DEV }}/${{ vars.REACT_APP_BASE_URL }}/ --cache-control max-age=30,must-revalidate,s-maxage=604800 --delete
+
+      - name: Request Invalidation to AWS Cloudfront
+        uses: oneyedev/aws-cloudfront-invalidation@v1
+        with:
+          distribution-id: ${{ secrets.CF_DISTRIBUTION_ID_DEV }}
           paths: |
             /*
