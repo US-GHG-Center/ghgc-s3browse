@@ -39,7 +39,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: ${{ vars.DEPLOYMEN_ARN_ROL }}
+          role-to-assume: ${{ vars.DEPLOYMENT_ARN_ROL }}
           role-session-name: "ghgc-s3browse-deployment"
           aws-region: "us-west-2"
 
@@ -57,6 +57,7 @@ jobs:
   deploy-development:
     if: github.ref == 'refs/heads/uswds-styling-changes'
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
