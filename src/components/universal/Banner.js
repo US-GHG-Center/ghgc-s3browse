@@ -1,5 +1,11 @@
 import React from 'react';
 
+const nasaLogo = new URL("../../nasa.png", import.meta.url);
+const epaLogo = new URL("../../epa.svg", import.meta.url);
+const nistLogo = new URL("../../nist.svg", import.meta.url);
+const noaaLogo = new URL("../../noaa.png", import.meta.url);
+
+
 export const Banner = () => {
   return (
     <section
@@ -28,22 +34,43 @@ export const Banner = () => {
                     <p className="usa-banner__header-text">
                       An official website of the United States government
                     </p>
-                    <p className="usa-banner__header-action" >
-                      Here's how you know
-                    </p>
+                    <p className="usa-banner__header-action">Here's how you know</p>
                   </div>
                   <button
                     type="button"
                     className="usa-accordion__button usa-banner__button white-banner-button"
                     aria-expanded="false"
                     aria-controls="gov-banner"
-                    style={{     color: 'white',
-                    backgroundColor: 'transparent',
-                    borderColor: 'white', }}
+                    style={{
+                      color: 'white',
+                      backgroundColor: 'transparent',
+                      borderColor: 'white',
+                    }}
                   >
-                    <span className="usa-banner__button-text">
-                      Here's how you know
-                    </span>
+                    <span className="usa-banner__button-text">Here's how you know</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="grid-col-auto partners-button-wrapper">
+                <div className="usa-banner__inner">
+                  <div className="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+                    <p className="usa-banner__header-action" aria-hidden="true">
+                      A coordinated effort
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="usa-accordion__button usa-banner__button white-banner-button"
+                    aria-expanded="false"
+                    aria-controls="partners-banner"
+                    style={{
+                        color: 'white',
+                        backgroundColor: 'transparent',
+                        borderColor: 'white',
+                      }}
+                  >
+                    <span className="usa-banner__button-text">A coordinated effort</span>
                   </button>
                 </div>
               </div>
@@ -100,9 +127,63 @@ export const Banner = () => {
               </div>
             </div>
           </div>
+
+          <div
+            className="usa-banner__content usa-accordion__content"
+            id="partners-banner"
+            hidden
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '2rem',
+                backgroundColor: '#ddd6d2',
+                // color: '#1b1b1b',
+                width: '100%',
+                borderColor: 'red',
+                borderWidth: '5px'
+              }}
+            >
+              <div style={{ margin: '0 124px 0 6px', width: '25%' }}>
+                <p>
+                  The US GHG Center would not be possible without the collaboration
+                  of the partnering U.S. governmental agencies and other
+                  non-governmental entities. The initial partners of this effort are
+                  NASA, EPA, NIST, and NOAA.
+                </p>
+              </div>
+              <div className="grid-row grid-gap-lg" style={{ flex: 1 }}>
+                <div className="usa-banner__guidance tablet:grid-col-6">
+                  <div className="usa-media-block__body">
+                  <img
+                      src={nasaLogo}
+                      alt="NASA logo"
+                     
+                    />
+            <img
+                src={epaLogo}
+                alt="EPA logo"
+                style={{ height: '76px' }}
+            />
+            <img
+                src={nistLogo}
+                alt="NIST logo"
+         
+            />
+            <img
+                src={noaaLogo}
+                alt="NOAA logo"
+            />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
   );
 };
-
