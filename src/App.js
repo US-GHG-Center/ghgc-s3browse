@@ -65,16 +65,16 @@ const handleToggle = () => {setOpen(!open);}
 
   return (
     <>
-      <Box display='flex' justifyContent='center' margin={2} width={'90%'}>
+      <Box display='flex' justifyContent='center' margin={2} width={'90%'}  >
        {/* <SearchBar setSkipFalse={setSkipFalse} />*/}
       </Box>
 
-      <Box display='flex' justifyContent='end' width={'90%'}>
-        <Box width="70%">
+      <Box   width={'90%'} mx="auto">
+        <Box >
           <BreadCrumbs setSkipFalse={setSkipFalse} />
         </Box>
 
-        <Box width="30%" display="flex" justifyContent="flex-end">
+        <Box  display="flex" justifyContent="flex-end"  gap={0.5} sx={{mr:2}}>
             <DownloadBtn setShow={setShow} />
             <GetURLBtn />
         </Box>
