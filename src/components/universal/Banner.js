@@ -145,7 +145,7 @@ export const Banner = () => {
                 width: '100%',
               }}
             >
-              <div style={{ margin: '0 124px 0 6px', width: '25%' ,color: '#1b1b1b'}}>
+              <div style={{ margin: '0 100px 0 6px', width: '35%' ,color: '#1b1b1b'}}>
                 <p>
                   The US GHG Center would not be possible without the collaboration
                   of the partnering U.S. governmental agencies and other
