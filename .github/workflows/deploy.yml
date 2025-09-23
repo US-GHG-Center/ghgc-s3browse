@@ -80,7 +80,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-          role-to-assume: ${{ secrets.DEPLOYMENT_ARN_ROL_DEV }}
+          role-to-assume: ${{ vars.DEPLOYMENT_ARN_ROL_DEV }}
           role-session-name: "ghgc-s3browse-deployment"
           aws-region: "us-west-2"
 
