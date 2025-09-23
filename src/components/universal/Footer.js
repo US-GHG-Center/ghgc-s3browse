@@ -13,7 +13,7 @@ export const Footer = () => {
               variant='caption' color='inherit' underline='hover' textAlign='center' sx={{ ml: 2 }}>
           Web Privacy Policy
         </Link>
-        <Link target='_blank' href='http://science.nasa.gov/earth-science/earth-science-data/data-information-policy'
+        <Link target='_blank' href='https://www.earthdata.nasa.gov/engage/open-data-services-software-policies/data-information-guidance'
               variant='caption' color='inherit' underline='hover' textAlign='center' sx={{ ml: 2 }}>
           Data & information Policy
         </Link>
@@ -29,7 +29,7 @@ export const Footer = () => {
               variant='caption' color='inherit' underline='hover' textAlign='center' sx={{ ml: 2 }}>
           USA.gov
         </Link>
-        <Link target='_blank' href='https://ghrc.nsstc.nasa.gov/home/ghrc-docs/cloud_browse_tutorial/'
+        <Link target='_blank' href='https://www.earthdata.nasa.gov/learn/tutorials/use-cloud-browse-access-unauthenticated-browse-images-user-guides'
               variant='caption' color='inherit' underline='hover' textAlign='center' sx={{ ml: 2 }}>
           User Guide
         </Link>

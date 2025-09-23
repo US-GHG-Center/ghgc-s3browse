@@ -157,22 +157,22 @@ export const Banner = () => {
                 <div className="usa-banner__guidance tablet:grid-col-6">
                   <div className="usa-media-block__body">
                   <img
-                      src="browseui//nasa.png"
+                      src="nasa.png"
                       alt="NASA logo"
                      
                     />
             <img
-                src="browseui/epa.svg"
+                src="epa.svg"
                 alt="EPA logo"
                 style={{ height: '76px' }}
             />
             <img
-                src="browseui//nist.svg"
+                src="nist.svg"
                 alt="NIST logo"
          
             />
             <img
-                src="browseui//noaa.png"
+                src="noaa.png"
                 alt="NOAA logo"
             />
                   </div>
