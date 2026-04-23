@@ -22,8 +22,8 @@ jobs:
         id: nvm
         run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
 
-      - name: Set Node version
-        uses: actions/setup-node@v3
+      - name: Set Node version to v${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
 
